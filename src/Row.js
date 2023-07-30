@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "./axios";
 import "./Row.css";
+import Youtube from "react-youtube";
+import movieTrailer from "movie-trailer";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setmovies] = useState([]);
+  const [trailerUrl, setTrailerUrl] = useState("");
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
@@ -17,6 +20,14 @@ function Row({ title, fetchUrl, isLargeRow }) {
   }, [fetchUrl]);
   //   console.log(movies);
 
+  const handleClick = (movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      setTrailerUrl;
+    }
+  };
+
   return (
     <div className="row">
       <h1>{title}</h1>
@@ -24,7 +35,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
         {movies.map((movie) => (
           <img
             // key={movie.id}
-            // onClick={() => handleClick(movie)}
+            onClick={() => handleClick(movie)}
             className={`row__poster ${isLargeRow && "row__posterLarge"}`}
             src={`${base_url}${
               isLargeRow ? movie.poster_path : movie.backdrop_path

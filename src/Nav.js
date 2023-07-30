@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Nav.css";
 
 function Nav() {
+  const [handle, setHandle] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        setHandle(true);
+      } else {
+        setHandle(false);
+      }
+    });
+    return () => {
+      window.removeEventListener("scroll");
+    };
+  }, []);
+
   return (
-    <nav className="nav">
+    <nav className={`nav ${handle && "nav__black"}`}>
       <img
         className="nav__logo"
         src="https://1000logos.net/wp-content/uploads/2017/05/Netflix-Logo.png"
