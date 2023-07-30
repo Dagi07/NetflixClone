@@ -12,9 +12,9 @@ function Nav() {
         setHandle(false);
       }
     });
-    return () => {
-      window.removeEventListener("scroll");
-    };
+    // return () => {
+    //   window.removeEventListener("scroll");
+    // };
   }, []);
 
   return (
