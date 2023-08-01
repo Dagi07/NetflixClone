@@ -1,4 +1,4 @@
-const API_KEY = "f3860f0c926466bd9e06800ca3e1f3f0";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const requests = {
   fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
